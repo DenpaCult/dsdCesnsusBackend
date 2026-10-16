@@ -6,6 +6,7 @@ import (
 	"dsdCensus/controller"
 	"dsdCensus/dao"
 	"dsdCensus/service"
+	"fmt"
 	"log"
 
 	"github.com/gin-gonic/gin"
@@ -31,5 +32,5 @@ func main() {
 	r.GET("/uuid/:discordId", uuidController.FindByDiscordId)
 	r.POST("/uuid", uuidController.Save)
 
-	r.Run("0.0.0.0:3001")
+	r.Run(fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port))
 }
